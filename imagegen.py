@@ -1,5 +1,5 @@
-import requests
 import openai
+import requests
 
 
 def get_bible_verse(book, chapter, verse):
@@ -9,7 +9,7 @@ def get_bible_verse(book, chapter, verse):
     url = f"{base_url}{book}+{chapter}:{verse}?translation=kjv"
     
     # Make the API request
-    response = requests.get(url, verify=False)
+    response = requests.get(url, verify=True)
     
     # Check for successful request
     if response.status_code != 200:
@@ -26,7 +26,7 @@ chapter = input("Enter the chapter number: (make sure it's a valid chapter)\n")
 verse = input("Enter the verse number: (make sure it's a valid verse)\n")
 
 verse_text = get_bible_verse(book, chapter, verse)
-print(verse_text)
+print("\n\n" + verse_text)
 
 # Set your OpenAI API key
 
@@ -65,7 +65,7 @@ while True:
             }
 
             # Make the API request
-            response = requests.post(api_endpoint, json=payload, headers=headers, verify=False)
+            response = requests.post(api_endpoint, json=payload, headers=headers, verify=True)
 
             # Check for successful request
             if response.status_code != 200:
@@ -74,8 +74,8 @@ while True:
             else:
                 # Print the image URL
                 image_url = response.json()["data"][0]["url"]
-                print("Here is the link to the image, click the link to view it." + image_url)
-                user_input = input("Do you like the image? \n(yes/no)\n")
+                print("\nHere is the link to the image, click the link to view it.\n\n" + image_url)
+                user_input = input("\n\nDo you like the image? \n(yes/no)\n")
                 if user_input.lower() == "yes":
                 	break
                 elif user_input.lower() == "no":
@@ -88,6 +88,6 @@ while True:
         continue
     else:
         print("Invalid input, please enter 'yes' or 'no'\n")
-print("\nThank You for using Mnemonic Verses!\n")
+print("\n\nThank You for using Mnemonic Verses!\n\n")
 referenceVerse = (book +" " + chapter+ ":" + verse)
-print("this was your verse for reference \n" + referenceVerse + " '" + verse_text + "' ")
+print("this was your verse for reference \n" + referenceVerse)
