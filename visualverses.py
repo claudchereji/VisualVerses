@@ -88,6 +88,6 @@ while True:
         continue
     else:
         print("Invalid input, please enter 'yes' or 'no'\n")
-print("\n\nThank You for using Mnemonic Verses!\n\n")
+print("\n\nThank You for using VisualVerses!\n\n")
 referenceVerse = (book +" " + chapter+ ":" + verse)
 print("this was your verse for reference \n" + referenceVerse)
